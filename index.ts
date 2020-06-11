@@ -6,7 +6,7 @@ function oracleObject(result: any, fn?: Function, options?: any): Array<object> 
   rowsData.map((rowData: any) => {
     let row = {}
     rowData.map((item: any, index: number) => {
-      const column = metaData[index].name.toLowerCase()
+      const column = metaData[index].name
       if(item || options?.allowNull) Object.assign(row, { [fn ? fn(column) : column]: item })
     });
     rows.push(row)
