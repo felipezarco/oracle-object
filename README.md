@@ -1,9 +1,18 @@
 
 ## Oracle Object
 
-Oracle's npm module oracledb returns an atypical response in which columns are displayed in a meta-data object.
+Oracle's npm module `oracledb` returns an atypical response in which columns are displayed as a meta-data object separate from the rows. This module helps programmers by turning those into more natural key-valued javascript objects.
 
-This module helps programmers by turning those into more natural key-value javascript objects.
+
+### Install
+
+The latest version is available at: https://www.npmjs.com/package/oracle-object
+
+Use your favorite package manager to install:
+
+```
+  yarn add oracle-object
+```
 
 ### Usage
 
@@ -11,9 +20,10 @@ This module helps programmers by turning those into more natural key-value javas
 oracleObject(result, fn, options)
 ```
 
-The function receives the result of an execution as the first parameter.
+The function receives the result of an execution as the first parameter. This is the only required parameter.
 
-The second argument is an optional function which receives each column and modifies it.
+
+Here's an exemple of an SQL execution with oracledb:
 
 ```javascript
  // ...
@@ -25,7 +35,16 @@ The second argument is an optional function which receives each column and modif
   )
 ```
 
-As a high-order function you may pass in a function as the second parameter.
+As a high-order function, you may pass in a function as the second argument. So that:
+
+```javascript
+const patients = oracleObject(result, col => col.toLowerCase(), { allowNull: true }) 
+```
+
+
+The second argument is an optional function which receives each column and modifies it. In the above example the function makes the object keys have the same name as the columns but lower case.
+
+Or if you want to modify the name of each column you could do:
 
 ```javascript
  const patients = oracleObject(result, (col) => {
@@ -37,7 +56,7 @@ As a high-order function you may pass in a function as the second parameter.
   })
 
 ```
-Given CD_PATIENT and DS_NAME are actual columns.The returned object will look like this:
+Given CD_PATIENT and DS_NAME are actual columns, the returned object will look like this:
 
 ```javascript
 
@@ -55,6 +74,8 @@ Given CD_PATIENT and DS_NAME are actual columns.The returned object will look li
   ]
 
 ```
+
+**Note:** the default return ensures the function does not limit the object keys to the ones in the cases.
 
 The third parameter receives an options object. The option `allowNull: false` is set by default.
 
