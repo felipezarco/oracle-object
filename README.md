@@ -25,8 +25,7 @@ The second argument is an optional function which receives each column and modif
   )
 ```
 
-Converting the result is easy as:
-
+As a high-order function you may pass in a function as the second parameter.
 
 ```javascript
  const patients = oracleObject(result, (col) => {
@@ -56,7 +55,6 @@ Given CD_PATIENT and DS_NAME are actual columns.The returned object will look li
   ]
 
 ```
-
 
 The third parameter receives an options object. The option `allowNull: false` is set by default.
 
