@@ -70,7 +70,7 @@ Given CD_PATIENT and DS_NAME are actual columns, the returned object will look l
     },
     {
       code: '129831',
-      name: 'Larissa'
+      name: null
       // ...
     },
   ]
@@ -83,10 +83,12 @@ Alternatively, if you need no configuration for defaults, the second parameter c
 
 ```javascript
 
+const object = { allowNull: true }
+
 const patients = oracleObject(result, {
   'CD_PATIENT': 'code',
   'DS_NAME': 'name'
-})
+}, options)
 
 ```
 
