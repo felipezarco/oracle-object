@@ -19,6 +19,13 @@
     "objects",
     "format"
   ],
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
+  "repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/felipezarco/oracle-object.git"
+  },
   "author": "Luiz Felipe Zarco <felipezarco@hotmail.com> (https://gitlab.com/felipezarco)",
   "license": "MIT",
   "dependencies": {
