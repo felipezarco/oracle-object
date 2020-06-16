@@ -103,3 +103,30 @@ test('accept null values', () => {
   ])
 
 })
+
+
+test('can be used with an object', () => {
+
+  const result = {
+    metaData: [
+      { name: 'CD_CLIENT' },
+      { name: 'NAME_CLIENT'},
+      { name: 'ANOTHER_COLUMN'},
+    ],
+    rows: [
+      ['85736', 'Felipe', null],
+      ['94386', 'Larissa', 1]
+    ]
+  }
+
+  const clients = oracleObject(result, { 
+    'CD_CLIENT': 'code',
+    'NAME_CLIENT': 'name'
+  })
+
+  expect(clients).toEqual([
+    { code: '85736', name: 'Felipe' },
+    { code: '94386', name: 'Larissa', ANOTHER_COLUMN: 1 }
+  ])
+
+})
