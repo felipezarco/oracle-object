@@ -1,6 +1,6 @@
 {
   "name": "oracle-object",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Turns oracledb execute result into javascript objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,11 +19,11 @@
     "objects",
     "format"
   ],
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/" 
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
-  "repository" : {
-    "type" : "git",
+  "repository": {
+    "type": "git",
     "url": "ssh://git@github.com/felipezarco/oracle-object.git"
   },
   "author": "Luiz Felipe Zarco <felipezarco@hotmail.com> (https://gitlab.com/felipezarco)",
