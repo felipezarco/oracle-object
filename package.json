@@ -1,6 +1,6 @@
 {
   "name": "oracle-object",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Turns oracledb execute result into javascript objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,18 +19,10 @@
     "objects",
     "format"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com/felipezarco/oracle-object.git"
-  },
   "author": "Luiz Felipe Zarco <felipezarco@hotmail.com> (https://gitlab.com/felipezarco)",
   "license": "MIT",
   "dependencies": {
     "@types/jest": "^26.0.0",
-    "repository": "git@github.com:felipezarco/oracle-object.git",
     "ts-jest": "^26.1.0",
     "tsc": "^1.20150623.0",
     "typescript": "^3.9.2"
