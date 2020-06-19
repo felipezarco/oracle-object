@@ -1,6 +1,6 @@
 {
   "name": "oracle-object",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Turns oracledb execute result into javascript objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/jest": "^26.0.0",
+    "oracle-object": "0.3.2",
     "ts-jest": "^26.1.0",
     "tsc": "^1.20150623.0",
     "typescript": "^3.9.2"
