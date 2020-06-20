@@ -1,5 +1,3 @@
-
-
 function oracleObject(result: any, fn?: Function | object, options?: any): Array<object> {
   const { metaData, rows: rowsData } = result
   const rows: any = []
@@ -13,9 +11,8 @@ function oracleObject(result: any, fn?: Function | object, options?: any): Array
             options?.defaultFn ? options.defaultFn(column) : column
           ]: item })
         } else Object.assign(row, { [fn ? fn(column) : column]: item })
-        
       }
-    });
+    })
     rows.push(row)
   })
   return rows
