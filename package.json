@@ -1,6 +1,6 @@
 {
   "name": "oracle-object",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Turns oracledb execute result into javascript objects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
