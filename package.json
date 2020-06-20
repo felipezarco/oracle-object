@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "oracle",
@@ -29,6 +30,7 @@
     "typescript": "^3.9.2"
   },
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^26.0.1"
   }
 }

@@ -3,7 +3,7 @@
 
 Oracle's npm module `oracledb` returns an atypical response in which columns are displayed as a meta-data object separate from the rows. This module helps programmers by turning those into more natural key-valued javascript objects.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/oracle-object.svg)](https://badge.fury.io/js/oracle-object)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/oracle-object.svg)](https://badge.fury.io/js/oracle-object) [![Build Status](https://travis-ci.org/felipezarco/oracle-object.svg?branch=master)](https://travis-ci.org/taniarascia/chip8) [![Coverage Status](https://coveralls.io/repos/github/felipezarco/oracle-object/badge.svg?branch=master)](https://coveralls.io/github/taniarascia/chip8?branch=master)
 
 [![npm](https://nodei.co/npm/oracle-object.png)](https://www.npmjs.com/package/oracle-object)
 
@@ -23,7 +23,7 @@ Use your favorite package manager to install:
 oracleObject(result, fn, options)
 ```
 
-The function receives the result of an execution as the first parameter. This is the only required parameter.
+The function receives the result of an execution as the first parameter. **This is the only required parameter**.
 
 Here's an exemple of an SQL execution with oracledb:
 
@@ -96,7 +96,7 @@ Or, given an example result where CD_PATIENT and DS_NAME are actual database col
 
 ```
 
-An equivalent usage with object instead of function would be:
+An equivalent would be:
 
 ```javascript
  const patients = oracleObject(result, {
@@ -107,9 +107,7 @@ An equivalent usage with object instead of function would be:
 
 ```
 
-
-
-The returned object will look like this:
+And the returned object will look like this:
 
 ```javascript
 
@@ -121,16 +119,14 @@ The returned object will look like this:
     },
     {
       code: '129831',
-      name: 'Larissa'
+      name: 'Larissa',
       // ...
     },
   ]
 
 ```
 
-**Note:** the default return ensures the function does not limit the object keys to the ones in the cases.
-
-Alternatively, if you need no configuration for defaults, the second parameter can be passed more simply as an object:
+**Note:** the _default_ return ensures the function does not limit the object keys to the ones in the cases.
 
 ```javascript
 
@@ -143,11 +139,11 @@ const patients = oracleObject(result, {
 
 ```
 
-The third parameter receives an options object. 
+The third parameter of `oracle-object` receives an options object. 
 
-The option `allowNull: false` is set by default. If you want all props do not forget to add the option.
+The option `allowNull: false` is set by default. If you want all props do not forget to add that option.
 
-The option `defaultFn` can be set, when using objects instead of functions, to apply that function to not specified (or _default_) columns.
+The option `defaultFn` can be set when using objects instead of functions to apply that function to not specified (or _default_) column names.
 
 License MIT @ Felipe Zarco
 
