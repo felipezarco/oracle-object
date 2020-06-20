@@ -1,5 +1,23 @@
 import oracleObject from './index'
 
+test('simple usage', () => {
+  const result = {
+    metaData: [
+      { name: 'manager_id' },
+      { name: 'department_id'},
+      { name: 'department_name'}
+    ],
+    rows: [
+      ['341235128', '3842', 'Finances'],
+      ['967361384', '3984', 'Sales'],
+      // ...
+    ]
+  }
+
+  console.log(oracleObject(result))
+
+})
+
 test('converts the oracle object', () => {
 
   const result = {
@@ -119,6 +137,8 @@ test('can be used with an object', () => {
     ]
   }
 
+  const options = { defaultFn: (val: any) => val.toLowerCase() }
+
   const clients = oracleObject(result, { 
     'CD_CLIENT': 'code',
     'NAME_CLIENT': 'name'
@@ -127,6 +147,36 @@ test('can be used with an object', () => {
   expect(clients).toEqual([
     { code: '85736', name: 'Felipe' },
     { code: '94386', name: 'Larissa', ANOTHER_COLUMN: 1 }
+  ])
+
+})
+
+
+test('can be used with an object with options', () => {
+
+  const result = {
+    metaData: [
+      { name: 'CD_CLIENT' },
+      { name: 'NAME_CLIENT'},
+      { name: 'ANOTHER_COLUMN'},
+    ],
+    rows: [
+      ['85736', 'Felipe', null],
+      ['94386', 'Larissa', 1]
+    ]
+  }
+
+  const options = { defaultFn: (val: any) => val.toLowerCase() }
+
+  const clients = oracleObject(result, { 
+    'CD_CLIENT': 'code',
+    'NAME_CLIENT': 'name'
+  },
+  options)
+
+  expect(clients).toEqual([
+    { code: '85736', name: 'Felipe' },
+    { code: '94386', name: 'Larissa', another_column: 1 }
   ])
 
 })

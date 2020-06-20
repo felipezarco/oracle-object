@@ -9,7 +9,9 @@ function oracleObject(result: any, fn?: Function | object, options?: any): Array
       const column = metaData[index].name
       if(item != null || options?.allowNull) {
         if (typeof fn === 'object' && fn !== null) {
-          Object.assign(row, { [(fn as any)[column] ? (fn as any)[column] : column]: item })
+          Object.assign(row, { [(fn as any)[column] ? (fn as any)[column] : 
+            options?.defaultFn ? options.defaultFn(column) : column
+          ]: item })
         } else Object.assign(row, { [fn ? fn(column) : column]: item })
         
       }

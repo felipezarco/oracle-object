@@ -25,7 +25,6 @@ oracleObject(result, fn, options)
 
 The function receives the result of an execution as the first parameter. This is the only required parameter.
 
-
 Here's an exemple of an SQL execution with oracledb:
 
 ```javascript
@@ -34,19 +33,57 @@ Here's an exemple of an SQL execution with oracledb:
     `SELECT manager_id, department_id, department_name
       FROM departments
       WHERE manager_id = :id`,
-    [103], 
+    [23], 
   )
 ```
 
-As a high-order function, you may pass in a function as the second argument. So that:
+This is an example of a normal result from `oracledb`:
 
 ```javascript
-const patients = oracleObject(result, col => col.toLowerCase(), { allowNull: true }) 
+  const result = {
+    metaData: [
+      { name: 'manager_id' },
+      { name: 'department_id'},
+      { name: 'department_name'}
+    ],
+    rows: [
+      ['23', '3842', 'Finances'],
+      ['23', '3984', 'Sales'],
+      // ...
+    ]
+  }
 ```
 
-The second argument is an optional function or an object which receives each column and modifies it. In the above example the function makes the object keys have the same name as the columns but lower case.
+The simplest usage of `oracle-object` would be:
 
-Or if you want to modify the name of each column you could do:
+```javascript
+  oracleObject(result) 
+```
+
+Which returns:
+
+```javascript
+    [
+      {
+        manager_id: '23',
+        department_id: '3842',
+        department_name: 'Finances'
+      },
+      {
+        manager_id: '23',
+        department_id: '3984',
+        department_name: 'Sales'
+      }
+    ]
+```
+
+The second argument is an optional function or an object which receives each column and modifies it. In the example below the function makes the object keys have the same name as the columns but lower cased.
+
+```javascript
+const registers = oracleObject(result, col => col.toLowerCase()) 
+```
+
+Or, given an example result where CD_PATIENT and DS_NAME are actual database columns, if you want to modify the name of each column you could do:
 
 ```javascript
  const patients = oracleObject(result, (col) => {
@@ -55,10 +92,24 @@ Or if you want to modify the name of each column you could do:
       case 'DS_NAME': return 'name'
       default: return col
     }
-  })
+  }, { allowNull: true })
 
 ```
-Given CD_PATIENT and DS_NAME are actual columns, the returned object will look like this:
+
+An equivalent usage with object instead of function would be:
+
+```javascript
+ const patients = oracleObject(result, {
+      'CD_PATIENT': 'code'
+      'DS_NAME': 'name'
+    }
+  }, { allowNull: true, defaultFn: col => col })
+
+```
+
+
+
+The returned object will look like this:
 
 ```javascript
 
@@ -83,15 +134,20 @@ Alternatively, if you need no configuration for defaults, the second parameter c
 
 ```javascript
 
-const object = { allowNull: true }
+const options = { defaultFn: col => 'not-defined-'+col }
 
 const patients = oracleObject(result, {
-  'CD_PATIENT': 'code', 'DS_NAME': 'name'
+  'CD_PATIENT': 'code', 
+  'DS_NAME': 'name'
 }, options)
 
 ```
 
-The third parameter receives an options object. The option `allowNull: false` is set by default. If you want all props do not forget to add the option.
+The third parameter receives an options object. 
+
+The option `allowNull: false` is set by default. If you want all props do not forget to add the option.
+
+The option `defaultFn` can be set, when using objects instead of functions, to apply that function to not specified (or _default_) columns.
 
 License MIT @ Felipe Zarco
 
