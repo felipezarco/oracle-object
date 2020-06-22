@@ -22,14 +22,15 @@
   ],
   "author": "Luiz Felipe Zarco <felipezarco@hotmail.com> (https://gitlab.com/felipezarco)",
   "license": "MIT",
-  "dependencies": {
-    "@types/jest": "^26.0.0",
-    "oracle-object": "0.3.2",
-    "ts-jest": "^26.1.0",
-    "tsc": "^1.20150623.0",
-    "typescript": "^3.9.2"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/felipezarco/oracle-object.git"
   },
   "devDependencies": {
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.9.2",
+    "ts-jest": "^26.1.0",
+    "@types/jest": "^26.0.0",
     "coveralls": "^3.1.0",
     "jest": "^26.0.1"
   }

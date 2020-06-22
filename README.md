@@ -3,7 +3,8 @@
 
 Oracle's npm module `oracledb` returns an atypical response in which columns are displayed as a meta-data object separate from the rows. This module helps programmers by turning those into more natural key-valued javascript objects.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/oracle-object.svg)](https://badge.fury.io/js/oracle-object) [![Build Status](https://travis-ci.org/felipezarco/oracle-object.svg?branch=master)](https://travis-ci.org/taniarascia/chip8) [![Coverage Status](https://coveralls.io/repos/github/felipezarco/oracle-object/badge.svg?branch=master)](https://coveralls.io/github/taniarascia/chip8?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/oracle-object.svg)](https://badge.fury.io/js/oracle-object) [![Build Status](https://travis-ci.org/felipezarco/oracle-object.svg?branch=master)](https://travis-ci.org/taniarascia/chip8) [![Coverage Status](https://coveralls.io/repos/github/felipezarco/oracle-object/badge.svg?branch=master)](https://coveralls.io/github/taniarascia/chip8?branch=master) ![Dependencies](https://img.shields.io/david/felipezarco/oracle-object) ![Downloads](https://img.shields.io/npm/dw/oracle-object)
+
 
 [![npm](https://nodei.co/npm/oracle-object.png)](https://www.npmjs.com/package/oracle-object)
 
